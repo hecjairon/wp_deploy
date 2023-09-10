@@ -12,10 +12,10 @@ jobs:
     - name: rsync deployments
       uses: burnett01/rsync-deployments@5.2
       with:
-        switches: -avzr --delete
+        switches: -avzr --delete --exclude="wp-config.php"
         path: /
-        remote_path: /home2/hecja354/demos/
-        remote_host: br00.hostgator.com.br
-        remote_user: hecja354
-        remote_port: 2222
+        remote_path: ${{ secrets.PATH_REMOTE }}
+        remote_host: ${{ secrets.SERVER_REMOTE }}
+        remote_user: ${{ secrets.USER_REMOTE }}
+        remote_port: ${{ secrets.PORT_SSH_REMOTE }}
         remote_key: ${{ secrets.RSA_PRIVATE_KEY }}
